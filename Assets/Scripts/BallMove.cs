@@ -23,15 +23,12 @@ public class BallMove : MonoBehaviour {
         if (curTime > startTime && !shouldMove)
             startBall();
          curTime += Time.deltaTime;
+        Dir = new Vector2( ourRb.velocity.normalized.x, ourRb.velocity.normalized.z);
     }
 
     void FixedUpdate()
     {
-        if (shouldMove)
-        {
-
-        }
-        else
+        if (!shouldMove)
             ourRb.velocity = Vector3.zero;
     }
 
@@ -68,7 +65,7 @@ public class BallMove : MonoBehaviour {
         speed += speed * 0.05f;
         Vector3 finalVel = ourRb.velocity.normalized;
         if (Mathf.Abs(finalVel.x) < 0.5)
-            finalVel.x /=  Mathf.Abs(finalVel.x);
+            finalVel.x = finalVel.x / Mathf.Abs(finalVel.x);
         ourRb.velocity = finalVel.normalized * speed;
     }
 
