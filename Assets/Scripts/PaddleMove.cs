@@ -3,6 +3,8 @@ using System.Collections;
 
 
 public class PaddleMove : MonoBehaviour {
+    public KeyCode up, down;
+
 
 	// Use this for initialization
 	void Start () {
